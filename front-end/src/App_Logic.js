@@ -1,0 +1,246 @@
+import axios from "axios";
+
+class ApiCalls {
+  constructor() {
+    this.NOTION_API_KEY = import.meta.env.VITE_NOTION_API_KEY;
+    this.NOTION_TABLE_ID = import.meta.env.VITE_NOTION_TABLE_ID;
+    this.NOTION_API_BASE_URL = `https://api.notion.com/v1`;
+    this.NOTION_API_VERSION = import.meta.env.VITE_NOTION_VERSION;
+  }
+
+  getTableTags() {
+    const json = {
+      "object": "database",
+      "id": "1276426e-5419-8094-837b-c10c9954fbeb",
+      "cover": null,
+      "icon": null,
+      "created_time": "2024-10-22T00:15:00.000Z",
+      "created_by": {
+        "object": "user",
+        "id": "17aa689b-d7fe-447d-83c3-70936361a823"
+      },
+      "last_edited_by": {
+        "object": "user",
+        "id": "17aa689b-d7fe-447d-83c3-70936361a823"
+      },
+      "last_edited_time": "2024-10-22T02:02:00.000Z",
+      "title": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Vendor Library",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Vendor Library",
+          "href": null
+        }
+      ],
+      "description": [],
+      "is_inline": false,
+      "properties": {
+        "Tags": {
+          "id": "%3CHiF",
+          "name": "Tags",
+          "type": "multi_select",
+          "multi_select": {
+            "options": [
+              {
+                "id": "ad3b68fb-429b-4f4a-b4e0-ead906d21078",
+                "name": "Flooring",
+                "color": "brown",
+                "description": null
+              },
+              {
+                "id": "8743f07b-20c9-4b41-9fe0-c2b4bd23fddc",
+                "name": "Home Insurance",
+                "color": "orange",
+                "description": null
+              },
+              {
+                "id": "d96ff998-e53b-4461-bd0c-cc54ec2f8458",
+                "name": "Home Inspection",
+                "color": "purple",
+                "description": null
+              },
+              {
+                "id": "71dcefcd-1b89-46c6-ad9a-895ab221e1b6",
+                "name": "Closets",
+                "color": "blue",
+                "description": null
+              },
+              {
+                "id": "c4912d7f-4542-4931-a955-27228fecae9b",
+                "name": "Blinds & Curtains",
+                "color": "yellow",
+                "description": null
+              },
+              {
+                "id": "47de625c-f4a5-4698-be63-e2eb9d45aab6",
+                "name": "Drywall Work",
+                "color": "gray",
+                "description": null
+              },
+              {
+                "id": "ff647976-f71f-4608-8eae-59ec8368f2ce",
+                "name": "Electrical",
+                "color": "pink",
+                "description": null
+              },
+              {
+                "id": "f70f58c6-3252-411d-8a05-e46277096e64",
+                "name": "Moving",
+                "color": "red",
+                "description": null
+              },
+              {
+                "id": "6a8605a5-704e-4ea3-8bcd-286d2d667a45",
+                "name": "Epoxy Floors",
+                "color": "green",
+                "description": null
+              },
+              {
+                "id": "90c529b7-7407-4eeb-9cbf-22e7d56e358b",
+                "name": "Glass Door",
+                "color": "default",
+                "description": null
+              },
+              {
+                "id": "59877e90-02ec-4769-9c13-ff6e2cb2abd0",
+                "name": "Cleaning",
+                "color": "pink",
+                "description": null
+              },
+              {
+                "id": "087b50a3-a7ec-48ed-9542-8322086dc537",
+                "name": "Painting",
+                "color": "purple",
+                "description": null
+              },
+              {
+                "id": "6cad814c-cc87-4258-b7a4-696d917bc99a",
+                "name": "Wallpaper",
+                "color": "brown",
+                "description": null
+              },
+              {
+                "id": "90328501-a218-438d-9dde-d0415743eeb7",
+                "name": "Landscaping",
+                "color": "green",
+                "description": null
+              },
+              {
+                "id": "aeb9bd59-69f2-4b7b-8442-607093cac94d",
+                "name": "Plumbing",
+                "color": "blue",
+                "description": null
+              },
+              {
+                "id": "15194dbf-bdc6-4fe8-8368-4ae257395f2c",
+                "name": "Built-Ins",
+                "color": "orange",
+                "description": null
+              },
+              {
+                "id": "d5786583-1a5a-4f8e-ba14-7e2400aa092c",
+                "name": "Fabricator",
+                "color": "default",
+                "description": null
+              },
+              {
+                "id": "dddfffa8-3b44-4e8e-9bf4-467cff75e5dd",
+                "name": "Water Filtration",
+                "color": "blue",
+                "description": null
+              },
+              {
+                "id": "b31c8101-239c-43de-bc83-83540bfac6c7",
+                "name": "Pools/Summer Kitchen",
+                "color": "orange",
+                "description": null
+              }
+            ]
+          }
+        },
+        "Contact Email": {
+          "id": "Gihe",
+          "name": "Contact Email",
+          "type": "email",
+          "email": {}
+        },
+        "Phone": {
+          "id": "LAZM",
+          "name": "Phone",
+          "type": "rich_text",
+          "rich_text": {}
+        },
+        "Comments": {
+          "id": "M%60UD",
+          "name": "Comments",
+          "type": "rich_text",
+          "rich_text": {}
+        },
+        "Recommended By": {
+          "id": "PzKd",
+          "name": "Recommended By",
+          "type": "rich_text",
+          "rich_text": {}
+        },
+        "Website": {
+          "id": "Ye%7Bu",
+          "name": "Website",
+          "type": "url",
+          "url": {}
+        },
+        "Specialty": {
+          "id": "kpEk",
+          "name": "Specialty",
+          "type": "rich_text",
+          "rich_text": {}
+        },
+        "Name": {
+          "id": "title",
+          "name": "Name",
+          "type": "title",
+          "title": {}
+        }
+      },
+      "parent": {
+        "type": "workspace",
+        "workspace": true
+      },
+      "url": "https://www.notion.so/1276426e54198094837bc10c9954fbeb",
+      "public_url": "https://young-tablecloth-d96.notion.site/1276426e54198094837bc10c9954fbeb",
+      "archived": false,
+      "in_trash": false,
+      "developer_survey": "https://notionup.typeform.com/to/bllBsoI4?utm_source=insomnia",
+      "request_id": "48a296fb-073f-4488-ac26-52f7135c8c24"
+    }
+
+    return json.properties.Tags.multi_select.options
+    // axios
+    //   .get(`${this.NOTION_API_BASE_URL}/databases/${this.NOTION_TABLE_ID}`, {
+    //     headers: {
+    //       Authorization: `Bearer ${this.NOTION_API_KEY}}`,
+    //       "Notion-Version": `${this.NOTION_API_VERSION}`
+    //     },
+    //   })
+    //   .then((response) => {
+    //     const tags = response.properties.Tags.multi_select.options
+    //     console.log(tags);
+    //     return tags;
+    //   }).catch(error =>
+    //     {
+    //       console.error(`Error:`,error)
+    //   });
+  }
+}
+
+export default ApiCalls;
